@@ -1,0 +1,57 @@
+const data = {
+    hippie: {
+        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        images: [1, 2, 3, 4]
+    },
+    lyubery: {
+        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        images: [5, 6, 7, 8]
+    },
+    stilyagi: {
+        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        images: [9, 10, 11, 12]
+    },
+    punk: {
+        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        images: [13, 14, 15, 16]
+    },
+    newwave: {
+        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
+        images: [17, 18, 19, 20]
+    }
+};
+
+function changeContent(type) {
+    const leftText = document.getElementById("leftText");
+    const rightText = document.getElementById("rightText");
+    const slides = document.getElementById("slides");
+
+    // ТЕКСТ
+    leftText.textContent = data[type].left;
+    rightText.textContent = data[type].right;
+
+    // КАРУСЕЛЬ (зацикленная)
+    slides.innerHTML = "";
+    const imgs = [...data[type].images, ...data[type].images];
+
+    imgs.forEach(num => {
+        const img = document.createElement("img");
+        img.src = `https://picsum.photos/1200/600?random=${num}`;
+        slides.appendChild(img);
+    });
+
+    // АКТИВНАЯ КНОПКА
+    document.querySelectorAll(".btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    document.querySelector(`.${type}`).classList.add("active");
+}
+
+// загрузка по умолчанию
+changeContent("hippie");

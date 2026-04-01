@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: white;
+}
+
+/* ===== КНОПКИ ===== */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: transparent;
+    border: 2px solid;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* Цвета */
+.hippie { border-color: green; color: green; }
+.lyubery { border-color: orange; color: orange; }
+.stilyagi { border-color: deeppink; color: deeppink; }
+.punk { border-color: blue; color: blue; }
+.newwave { border-color: purple; color: purple; }
+
+/* Hover */
+.btn:hover {
+    color: white;
+}
+
+.hippie:hover { background: green; }
+.lyubery:hover { background: orange; }
+.stilyagi:hover { background: deeppink; }
+.punk:hover { background: blue; }
+.newwave:hover { background: purple; }
+
+/* Active */
+.btn.active {
+    color: white;
+}
+
+.hippie.active { background: green; }
+.lyubery.active { background: orange; }
+.stilyagi.active { background: deeppink; }
+.punk.active { background: blue; }
+.newwave.active { background: purple; }
+
+/* ===== ОСНОВА ===== */
+.content {
+    position: relative;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+/* ===== ТЕКСТ ===== */
+.text {
+    position: absolute;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    padding: 50px 30px;
+    box-sizing: border-box;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+
+    /* ЧИСТЫЙ БЕЛЫЙ ФОН */
+    background: white;
+}
+
+/* ЛЕВЫЙ БЛОК */
+.left {
+    left: 0;
+}
+
+/* ПРАВЫЙ БЛОК */
+.right {
+    right: 0;
+}
+
+/* ГРАДИЕНТ ВНЕ ТЕКСТА */
+.left::after,
+.right::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* справа от левого текста */
+.left::after {
+    right: -80px;
+    background: linear-gradient(to right, white, transparent);
+}
+
+/* слева от правого текста */
+.right::after {
+    left: -80px;
+    background: linear-gradient(to left, white, transparent);
+}
+
+/* ===== КАРУСЕЛЬ ===== */
+.carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    animation: slide 30s linear infinite;
+}
+
+.slides img {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* АНИМАЦИЯ */
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}

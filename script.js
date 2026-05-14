@@ -1,57 +1,532 @@
+/* =========================
+   ПЕРВЫЙ СЛАЙДЕР
+========================= */
+
+let currentSlide = 0;
+
+const track = document.getElementById("introTrack");
+const slides = document.querySelectorAll(".intro-slide");
+
+const firstClone = slides[0].cloneNode(true);
+track.appendChild(firstClone);
+
+function updateSlider(animated = true) {
+    track.style.transition = animated ? "transform 0.5s ease" : "none";
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function nextSlide() {
+    currentSlide++;
+    updateSlider();
+
+    if (currentSlide === slides.length) {
+        setTimeout(() => {
+            currentSlide = 0;
+            updateSlider(false);
+        }, 500);
+    }
+}
+
+function prevSlide() {
+    if (currentSlide === 0) {
+        currentSlide = slides.length;
+        updateSlider(false);
+
+        setTimeout(() => {
+            currentSlide--;
+            updateSlider(true);
+        }, 10);
+    } else {
+        currentSlide--;
+        updateSlider(true);
+    }
+}
+
+
+/* =========================
+   ДАННЫЕ
+========================= */
+
 const data = {
     hippie: {
-        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        images: [1, 2, 3, 4]
+        left: ["В СССР движение хиппи появилось позже, чем в западных странах, только в 1970 году. Советские хиппи сильно отличались от американских: у них не было культа психоделиков, не было дешёвых и доступных джинсов, даже направление протеста было разным. Западные хиппи протестовали в основном против материализма и капитализма, в то время как советские хиппи выступали против жесткого идеологического контроля, отсутствия индивидуальной свободы и навязывания однообразного образа жизни. ",
+            "Хиппи также называли себя “системой” или “системными”. “Система” — это общество в обществе. Никаких законов здесь быть не может, каждый живёт по законам своей совести. Это один из вариантов того, как определяли для себя “систему” хиппи. Они описывали это движение как движение, которое дает каждому человеку возможность понять другого человека, который ищет взаимопонимания, и позволяет ему всесторонне совершенствоваться. В хиппи входили люди разных возрастов, национальностей, культур и вероисповеданий.",
+            "Идеал хиппи - общество братства, равенства, где не будет никаких различий между нациями, где любовь будет основным фактором между людьми. Деятельность хиппи во многом была подпольной, власти старались усилить над ними контроль, а обычные граждане относились к ним с непониманием и осуждением. “Системных” часто описывали как неухоженных, с длинными волосами, носящих рваные свитера и брюки, говорящих на особом и непонятном жаргоне.",
+            "Впрочем, мода на длинные волосы у хиппи действительно была — это было их отличительной чертой. Длинные волосы символизировали свободу и отказ от традиционных норм. Одежду носили часто выцветшую и потертую, что тоже было неким символом стремления к простоте. Поэтому обычным советским гражданам хиппи и казались неряхами. Джинсы были в дефиците, так что их советской версией стали широкие хлопковые брюки, сшитые самостоятельно и окрашенные в васильковый цвет. Участники движения предпочитали неброские и естественные тона в одежде, демонстрируя отказ от ярких и искусственных изделий советской легкой промышленности. Хиппи носили разные фенечки, значки и хайратники - повязки на голову.",
+            "Досуг советские хиппи проводили по-разному: кто-то был убеждённым трезвенником, а кто-то предпочитал развлекаться в компании друзей и портвейна “три топора”. В моде были путешествия автостопом - “трасса”, причем в новом городе считалось нормальным остановиться пожить у другого хиппи, даже совершенно незнакомого. Активно развивалась музыкальная культура, преимущественно играли на гитаре. Песни затрагивали темы любви, свободы, пацифизма, часто пелись на английском языке, что отражало влияние западной музыки на советское движение."],
+        right: ["Текст","Текст","Текст","Текст","Текст"],
+        images: ["hippie1.png",
+                 "hippie2.png",
+                 "hippie3.png",
+                 "hippie4.png",
+                 "hippie5.png"]
     },
+
     lyubery: {
-        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        images: [5, 6, 7, 8]
+        left: ["Появление люберов в конце 1970-х годов связано с ростом популярности культуризма - атлетической гимнастики. Однако культуризм быстро попал под запрет, официальная идеология не одобряла акцент культуристов на эстетике и наращивании мышечной массы. Тем не менее запрет лишь подогрел интерес, и в подмосковном городе Люберцы в подвалах домов стали организовываться импровизированные тренажерные залы с самодельными снарядами. Занимались советские культуристы по методикам из книги Георгия Тэнно “Атлетизм”, советских журналов «Физкультура и спорт» и «Спортивная жизнь России», а самым желанным был американский журнал Muscle & Fitness, просачивающийся в СССР из-за рубежа.",
+            "С 1982 года деятельность люберецких подростков и юношей обрела идеологическую базу: изначально они поучаствовали в драке против неофашистских групп, проводивших выступления в Москве в день рождения Гитлера. После этого у люберов была задана высокая планка справедливой “борьбы за идею”: теперь поездки в Москву сводились к борьбе с той молодежью, которая “позорит советский образ жизни”. Люберы выступали против хиппи, панков, металлистов и других неформалов.",
+            "Говоря о мотивации люберецких, выезжающих в Москву, необходимо отметить, что 'идейных' среди них было не так уж много, примерно около трети. Остальные 'не заморачивались' идейной борьбой и вели образ жизни, типичный для молодых людей: занимались спортом, ходили на дискотеки, в парки, в кино, вступали в конфликты с другими молодежными компаниями (иногда являясь агрессорами, иногда - объектами агрессии).",
+            "Тем не менее деятельность идейной части была заметна. Люберы планировали свои поездки в Москву, решали, где какая банда будет разгонять панков, хиппи, скейтеров и брейкдансеров. Как отмечает Владимир Яковлев в статье в журнал “Огонёк”, чаще всего люберы нападали на противников лишь тогда, когда у них было численное преимущество. Такие поездки в Москву могли заканчиваться в отделении милиции. Поэтому в глазах общественности вся субкультура состояла из хулиганов, даже несмотря на мирных люберов-спортсменов.",
+            "У люберов был свой стиль одежды, позволяющий в толпе найти “своих”. Главным элементом гардероба были широкие клетчатые штаны отечественного производства, которые противопоставлялись идеологически неверным джинсам. Одежда также подбиралась из соображений удобства в драке: летом - спортивная одежда и обувь, зимой - телогрейки. Представители субкультуры также надевали майки, не скрывающие рельефа мышц. На волне ажиотажа люберами стали называть себя молодые люди из разных подмосковных городов, и даже москвичи. Слово 'любер' стало обозначать не жителя Люберец, а представителя определенного субкультурного стиля, независимо от места его проживания. Группы, аналогичные люберецким, начали появляться и в других городах Советского Союза."],
+        right: ["Текст","Текст","Текст","Текст","Текст"],
+        images: ["luberi1.png","luberi2.png","luberi3.png","luberi4.png","luberi5_1.png"]
     },
+
     stilyagi: {
-        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        images: [9, 10, 11, 12]
+        left: ["В конце 1940-х годов появилось молодежное движение, выступающее против стереотипов и однообразия социалистического общества. Сторонники этого движения отличались циничным отношением к миру, аполитичным поведением и желанием выделиться из толпы и стать индивидуальными. ",
+            "Речь идёт про стиляг. Термин “стиляга” впервые появился в 1949 г. в фельетоне Д. Беляева, опубликованном в популярном сатирическом журнале “Крокодил”. Сами стиляги называли себя “штатниками”, подчёркивая любовь к американской одежде. В послевоенное время в СССР появились новые и необычные западные предметы быта и элементы одежды, которые привлекали молодежь, ведь эти товары почти не импортировались. Молодые люди доставали их у фарцовщиков и на черных рынках, перешивали одежду самостоятельно или в ателье, пытаясь подражать западной моде. Тем не менее ориентация на заграничные образцы была условной, оригинальные вещи, которые стоили дорого, ввозились в малом количестве и были почти недоступны, их приходилось имитировать, подделывать, используя местные материалы",
+            "Стиляги не боялись экспериментировать с цветами в одежде: носили пёстрые пиджаки, широкие яркие брюки, гавайские рубашки, разноцветные носки. Чуть позднее мода стиляг стала более сдержанной, и фирменными атрибутами стали брюки-дудочки, зауженные снизу до девятнадцати сантиметров, а также ботинки на белой каучуковой подошве с острыми носами. Причёска тоже была важной частью образа каждого уважающего себя стиляги: среди молодых людей была популярна укладка короля рок-н-ролла Элвиса Пресли, а девушки были в восторге от “бабетты” - популярной причёски Брижит Бардо.",
+            "Говоря о деятелях искусства, стоит упомянуть Гленна Миллера, Дюка Эллингтона, Бенни Гудмена, ведь это одни из самых громких имён джазовой эпохи. Стиляги были большими фанатами джаза, рок-нролла и буги-вуги, который являлся их любимым танцем. Пластинки с музыкой были большой редкостью, но молодёжь умудрялась доставать их нелегальными путями. Был вариант гораздо проще: одолжить у знакомого пластинку, чтобы переписать, чаще всего с помощью рентгеновских снимков, тогда музыку можно слушать “накостях”.",
+            "Советское общество часто представляло стиляг как поверхностных и необразованных людей, но на самом деле большая часть участников движения интересовалась не только подражанием западной моде, но и кинематографом, как западным, так и отечественным, литературой, историей. Важно отметить, что стиляги не пытались протестовать против советской власти, не одобряли и не критиковали её. Их увлечение западной культурой было больше похоже на попытку эскапизма, хобби, а не на политическое высказывание. Они не “преклонялись” перед Западом, а скорее “играли” в него."],
+        right: ["Текст","Текст","Текст","Текст","Текст"],
+        images: ["stilyagi1.png","stilyagi2.png","stilyagi3.png","stilyagi5.png","stilyagi4.png"]
     },
+
     punk: {
-        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        images: [13, 14, 15, 16]
+        left: ["Движение панков в СССР появилось под конец 1970-х годов. Эта молодежь не была похожа ни на стиляг, ни на хиппи. Она не особенно декларировала свое восхищение западной культурой, предпочитая в одежде классические советские бренды, которые носили довольно странным образом: например, строгий пиджак одевался на тельняшку, галстук на голое тело, а длиннополый плащ дополнялся кроссовками и женским шарфом.",
+            "Некоторые подобные персонажи завершали свой визуальный образ самодельными украшениями, советскими значками, брелоками, булавками и вообще всем, что можно было на себя нацепить. С причёсками тоже не заморачивались - помимо ирокезов достаточно было просто привести волосы в творческий беспорядок, а лучше в настоящий хаос.",
+            "Эти молодые люди не стремились как-то организоваться, они не рассматривали себя как определенную субкультуру, они никак себя не называли, они просто проводили вместе время, веселясь так, как им хочется. Вскоре некоторые из них открыли для себя музыкальные инструменты и стали экспериментировать с музицированием, разделяя общее для них всех отсутствие музыкального образования и вообще какого-либо интереса к профессиональной стороне дела.",
+            "Маргинальное положение первых советских панков их отнюдь не стесняло. Более того, оно стало одной из их центральных культурных и поведенческих стратегий. В рамках этой стратегии экстремальный алкоголизм, например, возводился в ранг морального императива. Уловив общий настрой британского панка первой волны, советские панки проигнорировали ее политические аспекты. Бездельники не пытались свергнуть систему, никак с ней не боролись, предпочитая находиться, скорее, вне ее.",
+            "Но субкультура начала стремительно меняться после прихода к власти Юрия Андропова, который начинает кампанию по “закручиванию гаек”. В ответ на ужесточение режима происходит радикализация молодежи. Новое поколение более открыто заявляет свою культурную идентичность. В 1984 году Виктор Цой записывает песню «Прогулка романтика», которая дает новое определение «бездельникам». “Гражданская оборона”, “Телевизор”, “Ноль” и многие другие коллективы записывают альбомы разной степени политизированности, где критикуют советскую власть и образ жизни. Панк больше не был просто дурачеством. Он стал пространством открытого противостояния государству и обществу. Панки середины 1980-х годов прямо заявляли о своей принципиальной несовместимости с властью и обществом в целом. "],
+        right: ["Текст","Текст","Текст","Текст","Текст"],
+        images: ["panki1.png","panki2.png","panki3.png","panki4.png","panki5.png"]
     },
+
     newwave: {
-        left: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        right: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue velit, consequat ac lacus at, pharetra posuere quam. Cras augue arcu, viverra at auctor sit amet, congue et odio. Nunc tincidunt purus a justo mattis fermentum. Aliquam faucibus dolor non augue egestas sollicitudin. Donec aliquam est et leo semper ultrices. Aenean non erat tincidunt, commodo massa quis, imperdiet velit. Vestibulum non accumsan justo. Mauris magna libero, pellentesque et ullamcorper fringilla, porta ut mauris. Maecenas pretium dolor sit amet libero iaculis eleifend. Mauris pretium aliquet nisl posuere malesuada. Ut ac elementum sem. Cras lobortis lorem rhoncus, porttitor ligula at, elementum quam. Ut semper purus et magna gravida, eu aliquam velit posuere. Mauris eu commodo enim, a viverra sem. Sed eget pellentesque nisi. Maecenas vel lobortis turpis. In sagittis lacinia vestibulum. Phasellus iaculis mi et ante aliquet, a finibus odio imperdiet. Vivamus sed erat quis metus dignissim consectetur ut at mauris. Sed.",
-        images: [17, 18, 19, 20]
+        left: ["Движение ньювейверов было основано на меломанских предпочтениях и на постпанковской эстетике. Это было новое течение, связанное как с электронной музыкой, так и с определенным явлением в молодежной дискотечной моде 80-х. Изначально этот термин не имел под собой четкого определения в виде стиля, который подразумевал нечто яркое, необычное и самостоятельное. Под подобное определение попадали и брейкера, и попперы, и даже стиляги 80-х.",
+            "Ньювейверы искали себя через внешний вид и музыку. В середине 1980-х в связи с популяризацией диско и подъемом “металлистической волны” общая масса ньювейва разделилась на два направления: поклонники диско и зарубежной поп-эстрады, уделявшие большое внимание брендовым вещам, стали называться “попперами”. Второе направление - более глубоко погруженные в культуру “новой волны” люди. Они обитали в среде творческого андеграунда, который экспериментировал тогда в рамках модовских и постпанковских традиций. Такие ньювейверы слушали группу Japan и редкие малоизвестные андеграунд-группы.",
+            "Ньювейверы жили в ритме тусовок, прогулок и поиска впечатлений. В Москве начала 1980-х практически единственной формой молодежного досуга были дискотеки, которые проводились исключительно до 23:00, но этого хватало, чтобы показать свой стиль. Молодые собирались в местах типа “пятачков”, пересекались со стилягами, рокерами, границы между субкультурами становились довольно размыты.",
+            "Одной из ключевых черт ньювейверов, как и представителей других субкультур, было их стремление к свободе самовыражения и независимости от официальных канонов. В условиях советского общества, где царил строгий контроль над культурой и молодежью, ньювейверы представляли собой своеобразное явление, выходящее за рамки установленных в то время и привычных норм и правил. Они создавали сообщества единомышленников, устраивая музыкальные вечера и фестивали, обмениваясь опытом и идеями.",
+            "Ньювейверы собирали свой стиль сами: ходили по комиссионным магазинам, причем часто приходилось идти на всякие ухищрения, если найденные туфли были меньше или больше по размеру. Узкая обувь натиралась жиром и потом усыхала на ступне, принося немалое беспокойство, а если туфли были на несколько размеров больше, то, конечно же, пустоты подбивались ватой. Иногда это все принимало достаточно карикатурный вид неправильных пропорций, но это доставляло лишь дополнительную порцию положительных эмоций. В ход шли разные кепки, береты, плащи, пальто, очки – лишь бы не выглядеть как все и держаться определенной личной эстетики, обязательно как-то доделанной или скомбинированной лично."],
+        right: ["Текст","Текст","Текст","Текст","Текст"],
+        images: ["newwave1.jpg","neewwav22.jpg","newwave3.png","newwave4.png","newwave5.png"]
     }
 };
 
-function changeContent(type) {
-    const leftText = document.getElementById("leftText");
-    const rightText = document.getElementById("rightText");
-    const slides = document.getElementById("slides");
 
-    // ТЕКСТ
-    leftText.textContent = data[type].left;
-    rightText.textContent = data[type].right;
+/* =========================
+   ВТОРОЙ СЛАЙДЕР
+========================= */
 
-    // КАРУСЕЛЬ (зацикленная)
-    slides.innerHTML = "";
-    const imgs = [...data[type].images, ...data[type].images];
+let subcultureIndex = 0;
+let stepIndex = 0;
 
-    imgs.forEach(num => {
-        const img = document.createElement("img");
-        img.src = `https://picsum.photos/1200/600?random=${num}`;
-        slides.appendChild(img);
+const keys = ["hippie", "lyubery", "stilyagi", "punk", "newwave"];
+
+const textViewport = document.getElementById("textViewport");
+const imageViewport = document.getElementById("imageViewport");
+
+let currentText = null;
+let currentImg = null;
+
+
+/* создание элементов */
+function createText(item) {
+    const el = document.createElement("div");
+
+    el.textContent =
+        item.left[stepIndex] + "\n\n" + item.right[stepIndex];
+
+    Object.assign(el.style, {
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        padding: "60px",
+        boxSizing: "border-box",
+        fontSize: "18px",
+        lineHeight: "1.7",
+        background: "white",
+        transition: "transform 0.8s ease",
+        transform: "translateY(0%)"
     });
 
-    // АКТИВНАЯ КНОПКА
-    document.querySelectorAll(".btn").forEach(btn => {
-        btn.classList.remove("active");
-    });
-
-    document.querySelector(`.${type}`).classList.add("active");
+    return el;
 }
 
-// загрузка по умолчанию
-changeContent("hippie");
+function createImg(item) {
+    const img = document.createElement("img");
+
+    img.src = item.images[stepIndex];
+
+    Object.assign(img.style, {
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        transition: "transform 0.8s ease",
+        transform: "translateY(0%)"
+    });
+
+    return img;
+}
+
+
+/* отрисовка шага */
+function renderStep() {
+
+    const key = keys[subcultureIndex];
+    const item = data[key];
+
+    const newText = createText(item);
+    const newImg = createImg(item);
+
+    newText.style.transform = "translateY(100%)";
+    newImg.style.transform = "translateY(-100%)";
+
+    textViewport.appendChild(newText);
+    imageViewport.appendChild(newImg);
+
+    requestAnimationFrame(() => {
+
+        if (currentText) {
+            currentText.style.transform = "translateY(-100%)";
+        }
+
+        if (currentImg) {
+            currentImg.style.transform = "translateY(100%)";
+        }
+
+        newText.style.transform = "translateY(0%)";
+        newImg.style.transform = "translateY(0%)";
+    });
+
+    setTimeout(() => {
+        if (currentText) currentText.remove();
+        if (currentImg) currentImg.remove();
+
+        currentText = newText;
+        currentImg = newImg;
+
+    }, 850);
+}
+
+
+/* =========================
+   КНОПКИ СУБКУЛЬТУР
+========================= */
+
+function changeSubculture(name) {
+    const index = keys.indexOf(name);
+    if (index === -1) return;
+
+    subcultureIndex = index;
+    stepIndex = 0;
+
+    renderStep();
+}
+
+
+/* =========================
+   УПРАВЛЕНИЕ ШАГАМИ
+========================= */
+
+function nextSubculture() {
+
+    stepIndex++;
+
+    // ВАЖНО: НЕ переключаем субкультуру автоматически
+    if (stepIndex >= 5) {
+        stepIndex = 0;
+    }
+
+    renderStep();
+}
+
+/* =========================
+   СТАРТ
+========================= */
+const contentSection = document.querySelector(".content");
+
+contentSection.addEventListener("click", (e) => {
+    // чтобы клик по кнопке ↓ не вызывал двойное срабатывание
+    if (e.target.classList.contains("down-btn")) return;
+
+    nextSubculture();
+});
+
+renderStep();
+
+
+/* =========================
+   ТЕСТ СССР
+========================= */
+
+const questions = [
+
+{
+    question: "Какой стиль одежды тебе ближе?",
+    answers: [
+        { text: "Яркий и необычный", type: "stilyagi" },
+        { text: "Свободный и удобный", type: "hippie" },
+        { text: "Хаотичный и бунтарский", type: "punk" },
+        { text: "Спортивный и практичный", type: "lyubery" },
+        { text: "Стильный и футуристичный", type: "newwave" }
+    ]
+},
+
+{
+    question: "Как ты относишься к обществу?",
+    answers: [
+        { text: "Хочу выделяться", type: "stilyagi" },
+        { text: "Хочу свободы и мира", type: "hippie" },
+        { text: "Мне плевать на правила", type: "punk" },
+        { text: "Нужен порядок", type: "lyubery" },
+        { text: "Люблю быть частью творческой тусовки", type: "newwave" }
+    ]
+},
+
+{
+    question: "Какая музыка тебе ближе?",
+    answers: [
+        { text: "Джаз и рок-н-ролл", type: "stilyagi" },
+        { text: "Гитара и песни о свободе", type: "hippie" },
+        { text: "Панк-рок", type: "punk" },
+        { text: "Энергичная музыка", type: "lyubery" },
+        { text: "Электронная музыка и new wave", type: "newwave" }
+    ]
+},
+
+{
+    question: "Что тебе важнее?",
+    answers: [
+        { text: "Индивидуальность", type: "stilyagi" },
+        { text: "Свобода", type: "hippie" },
+        { text: "Протест", type: "punk" },
+        { text: "Сила", type: "lyubery" },
+        { text: "Самовыражение", type: "newwave" }
+    ]
+},
+
+{
+    question: "Как бы ты провёл вечер?",
+    answers: [
+        { text: "На танцах", type: "stilyagi" },
+        { text: "С друзьями и гитарой", type: "hippie" },
+        { text: "На андеграунд-концерте", type: "punk" },
+        { text: "В спортзале", type: "lyubery" },
+        { text: "На дискотеке 80-х", type: "newwave" }
+    ]
+},
+
+{
+    question: "Какой аксессуар тебе нравится?",
+    answers: [
+        { text: "Яркий галстук", type: "stilyagi" },
+        { text: "Фенечки", type: "hippie" },
+        { text: "Булавки и значки", type: "punk" },
+        { text: "Спортивная сумка", type: "lyubery" },
+        { text: "Тёмные очки и плащ", type: "newwave" }
+    ]
+},
+
+{
+    question: "Как ты относишься к правилам?",
+    answers: [
+        { text: "Люблю нарушать стереотипы", type: "stilyagi" },
+        { text: "Свобода важнее правил", type: "hippie" },
+        { text: "Правила существуют чтобы их ломать", type: "punk" },
+        { text: "Должна быть дисциплина", type: "lyubery" },
+        { text: "Предпочитаю жить по своим эстетическим принципам", type: "newwave" }
+    ]
+},
+
+{
+    question: "Что тебя вдохновляет?",
+    answers: [
+        { text: "Западная мода", type: "stilyagi" },
+        { text: "Путешествия и свобода", type: "hippie" },
+        { text: "Анархия и протест", type: "punk" },
+        { text: "Спорт и сила", type: "lyubery" },
+        { text: "Музыка, стиль и атмосфера 80-х", type: "newwave" }
+    ]
+},
+
+{
+    question: "Как ты выглядишь в толпе?",
+    answers: [
+        { text: "Самый яркий", type: "stilyagi" },
+        { text: "Самый расслабленный", type: "hippie" },
+        { text: "Самый странный", type: "punk" },
+        { text: "Самый крепкий", type: "lyubery" },
+        { text: "Самый стильный и загадочный", type: "newwave" }
+    ]
+},
+
+{
+    question: "Что тебе ближе?",
+    answers: [
+        { text: "Танцы буги-вуги", type: "stilyagi" },
+        { text: "Автостоп и свобода", type: "hippie" },
+        { text: "Хаос и протест", type: "punk" },
+        { text: "Сила и порядок", type: "lyubery" },
+        { text: "Ночная дискотека и неон", type: "newwave" }
+    ]
+}
+
+];
+
+const results = {
+    stilyagi: {
+        text: "Ты — Стиляга!",
+        color: "hotpink"
+    },
+
+    hippie: {
+        text: "Ты — Хиппи!",
+        color: "green"
+    },
+
+    punk: {
+        text: "Ты — Панк!",
+        color: "blue"
+    },
+
+    lyubery: {
+        text: "Ты — Любер!",
+        color: "orange"
+    },
+
+    newwave: {
+        text: "Ты — Ньювейвер!",
+        color: "purple"
+    }
+};
+
+let currentQuestion = 0;
+
+let scores = {
+    stilyagi: 0,
+    hippie: 0,
+    punk: 0,
+    lyubery: 0,
+    newwave: 0
+};
+
+const quiz = document.getElementById("quiz");
+const nextBtn = document.getElementById("nextBtn");
+const result = document.getElementById("result");
+
+function showQuestion() {
+
+    const q = questions[currentQuestion];
+
+    quiz.innerHTML = `
+        <div class="question">${q.question}</div>
+
+        <div class="answers">
+            ${q.answers.map(answer => `
+                <button class="answer-btn"
+                    data-type="${answer.type}">
+                    ${answer.text}
+                </button>
+            `).join("")}
+        </div>
+    `;
+
+    document.querySelectorAll(".answer-btn")
+        .forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                document.querySelectorAll(".answer-btn")
+                    .forEach(b => b.classList.remove("selected"));
+
+                btn.classList.add("selected");
+
+                nextBtn.dataset.type = btn.dataset.type;
+            });
+
+        });
+}
+
+showQuestion();
+
+nextBtn.addEventListener("click", () => {
+
+    const type = nextBtn.dataset.type;
+
+    if (!type) return;
+
+    scores[type]++;
+
+    currentQuestion++;
+
+    nextBtn.dataset.type = "";
+
+    if (currentQuestion < questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        showResult();
+    }
+});
+
+function showResult() {
+
+    quiz.style.display = "none";
+    nextBtn.style.display = "none";
+
+    let max = 0;
+    let finalType = "";
+
+    for (let type in scores) {
+
+        if (scores[type] > max) {
+
+            max = scores[type];
+            finalType = type;
+        }
+    }
+
+    result.innerHTML = `
+        <h2 style="
+            color:${results[finalType].color};
+            font-size:56px;
+        ">
+            ${results[finalType].text}
+        </h2>
+    `;
+}
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+const galleryImages =
+    document.querySelectorAll(".gallery-img");
+
+const lightbox =
+    document.getElementById("lightbox");
+
+const lightboxImg =
+    document.getElementById("lightboxImg");
+
+const closeLightbox =
+    document.getElementById("closeLightbox");
+
+galleryImages.forEach(img => {
+
+    img.addEventListener("click", () => {
+
+        lightbox.classList.add("active");
+
+        lightboxImg.src = img.src;
+    });
+
+});
+
+closeLightbox.addEventListener("click", () => {
+
+    lightbox.classList.remove("active");
+});
+
+lightbox.addEventListener("click", (e) => {
+
+    if (e.target === lightbox) {
+
+        lightbox.classList.remove("active");
+    }
+});

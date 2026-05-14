@@ -2,31 +2,256 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Субкультуры СССР</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яркое прошлое СССР</title>
+
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="star.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
+    <!-- ЗАГОЛОВОК -->
+    <h1 class="main-title">Яркое прошлое СССР</h1>
+
+    <!-- ВВОДНЫЙ СЛАЙДЕР -->
+    <section class="intro-slider">
+
+        <button class="arrow left-arrow" onclick="prevSlide()">❮</button>
+
+        <div class="intro-track" id="introTrack">
+
+            <!-- СЛАЙД 1 -->
+            <div class="intro-slide">
+                <img src="1.png" alt="">
+                <div class="intro-text">
+                    Ещё с глубокой древности известны различные объединения людей с
+                    одним типом поведения или с общими взглядами на те или иные
+                    вещи: природу, искусство, мироустройство. Людям всегда было
+                    свойственно стремление к объединению.
+                </div>
+            </div>
+
+            <!-- СЛАЙД 2 -->
+            <div class="intro-slide">
+                <img src="2.png" alt="">
+                <div class="intro-text">
+                    В дореволюционной России насчитывались сотни различных
+                    обществ, созданных по различным признакам на основе
+                    добровольного участия. Существовали рабочие кружки, которые
+                    были созданы по инициативе самих рабочих, что ярко
+                    свидетельствовало об их стремлении удовлетворять свои культурные
+                    и социальные вопросы.
+                </div>
+            </div>
+
+            <!-- СЛАЙД 3 -->
+            <div class="intro-slide">
+                <img src="3.png" alt="">
+                <div class="intro-text">
+                    Бурное развитие различных общественных объединений совпадает с
+                    периодами расширения демократии: так, например, в годы
+                    “хрущевской оттепели” были созданы такие общественные
+                    организации, как Комитет молодежных организаций СССР,
+                    Комитет советских женщин и другие.
+                </div>
+            </div>
+
+            <!-- СЛАЙД 4 -->
+            <div class="intro-slide">
+                <img src="4.png" alt="">
+                <div class="intro-text">
+                    Неформальные молодежные движения стали зарождаться ещё в
+                    конце 1940-х годов, в условиях разрухи и социальных перемен.
+                    Во многом этому способствовало культурное влияние Запада,
+                    от которого Советский Союз не смог полностью изолироваться.
+                </div>
+            </div>
+
+            <!-- СЛАЙД 5 -->
+            <div class="intro-slide">
+                <img src="5.png" alt="">
+                <div class="intro-text">
+                    В 1980-е годы на волне перестройки и гласности субкультуры
+                    в СССР пережили расцвет. Молодежь уже более открыто выражала
+                    свое недовольство советской системой. Неформалы стали
+                    символом перемен и свободы.
+                </div>
+            </div>
+
+        </div>
+
+        <button class="arrow right-arrow" onclick="nextSlide()">❯</button>
+
+    </section>
+
+    <!-- КНОПКИ -->
+    <header>
     <div class="menu">
-        <button class="btn hippie" onclick="changeContent('hippie')">Хиппи</button>
-        <button class="btn lyubery" onclick="changeContent('lyubery')">Люберы</button>
-        <button class="btn stilyagi" onclick="changeContent('stilyagi')">Стиляги</button>
-        <button class="btn punk" onclick="changeContent('punk')">Панки</button>
-        <button class="btn newwave" onclick="changeContent('newwave')">Ньювейверы</button>
+
+        <button class="btn hippie" onclick="changeSubculture('hippie')">
+        Хиппи
+        </button>
+
+    <button class="btn lyubery" onclick="changeSubculture('lyubery')">
+    Люберы
+    </button>
+
+    <button class="btn stilyagi" onclick="changeSubculture('stilyagi')">
+    Стиляги
+    </button>
+
+    <button class="btn punk" onclick="changeSubculture('punk')">
+    Панки
+    </button>
+
+    <button class="btn newwave" onclick="changeSubculture('newwave')">
+    Ньювейверы
+    </button>
+
     </div>
-</header>
+    </header>
 
-<section class="content">
-    <div class="text left" id="leftText"></div>
+    <!-- СЛАЙДЕР СУБКУЛЬТУР -->
+    <section class="content">
 
-    <div class="carousel">
-        <div class="slides" id="slides"></div>
+    <div class="column text-column">
+        <div class="viewport" id="textViewport"></div>
     </div>
 
-    <div class="text right" id="rightText"></div>
+    <div class="column image-column">
+        <div class="viewport" id="imageViewport"></div>
+    </div>
+
+    <button class="down-btn" onclick="nextSubculture()">↓</button>
+
+    </section>
+
+<!-- =========================
+     ТЕСТ
+========================= -->
+
+    <section class="quiz-section">
+
+        <h2 class="quiz-title">
+            Кто ты из субкультур СССР?
+        </h2>
+
+        <div class="quiz-box">
+
+            <div id="quiz"></div>
+
+            <button id="nextBtn">
+                Далее
+            </button>
+
+            <div id="result"></div>
+
+        </div>
+
+    </section>
+
+<!-- =========================
+     ГАЛЕРЕЯ СССР
+========================= -->
+
+<section class="gallery-section">
+
+    <h2 class="gallery-title">
+        Галерея субкультур СССР
+    </h2>
+
+    <div class="gallery-wrapper">
+
+        <div class="gallery-track">
+
+            <!-- ХИППИ -->
+            <img src="hippie/1.png" class="gallery-img hippie-frame">
+            <img src="hippie/2.png" class="gallery-img hippie-frame">
+            <img src="hippie/3.jpg" class="gallery-img hippie-frame">
+            <img src="hippie/4.jpg" class="gallery-img hippie-frame">
+            <img src="hippie/5.jpg" class="gallery-img hippie-frame">
+
+            <!-- ЛЮБЕРЫ -->
+            <img src="lub/1.png" class="gallery-img lyubery-frame">
+            <img src="lub/2.png" class="gallery-img lyubery-frame">
+            <img src="lub/3.png" class="gallery-img lyubery-frame">
+            <img src="lub/4.png" class="gallery-img lyubery-frame">
+            <img src="lub/5.png" class="gallery-img lyubery-frame">
+
+            <!-- СТИЛЯГИ -->
+            <img src="stil/1.png" class="gallery-img stilyagi-frame">
+            <img src="stil/2.png" class="gallery-img stilyagi-frame">
+            <img src="stil/3.png" class="gallery-img stilyagi-frame">
+            <img src="stil/4.png" class="gallery-img stilyagi-frame">
+            <img src="stil/5.jpg" class="gallery-img stilyagi-frame">
+
+            <!-- ПАНКИ -->
+            <img src="punki/1.png" class="gallery-img punk-frame">
+            <img src="punki/2.png" class="gallery-img punk-frame">
+            <img src="punki/3.png" class="gallery-img punk-frame">
+            <img src="punki/4.png" class="gallery-img punk-frame">
+            <img src="punki/5.png" class="gallery-img punk-frame">
+
+            <!-- НЬЮВЕЙВЕРЫ -->
+            <img src="newwave/1.jpg" class="gallery-img newwave-frame">
+            <img src="newwave/2.jpg" class="gallery-img newwave-frame">
+            <img src="newwave/3.png" class="gallery-img newwave-frame">
+            <img src="newwave/4.png" class="gallery-img newwave-frame">
+            <img src="newwave/5.png" class="gallery-img newwave-frame">
+
+            <!-- КОПИЯ ДЛЯ БЕСКОНЕЧНОСТИ -->
+            
+            <!-- ХИППИ -->
+            <img src="hippie/1.png" class="gallery-img hippie-frame">
+            <img src="hippie/2.png" class="gallery-img hippie-frame">
+            <img src="hippie/3.jpg" class="gallery-img hippie-frame">
+            <img src="hippie/4.jpg" class="gallery-img hippie-frame">
+            <img src="hippie/5.jpg" class="gallery-img hippie-frame">
+
+            <!-- ЛЮБЕРЫ -->
+            <img src="lub/1.png" class="gallery-img lyubery-frame">
+            <img src="lub/2.png" class="gallery-img lyubery-frame">
+            <img src="lub/3.png" class="gallery-img lyubery-frame">
+            <img src="lub/4.png" class="gallery-img lyubery-frame">
+            <img src="lub/5.png" class="gallery-img lyubery-frame">
+
+            <!-- СТИЛЯГИ -->
+            <img src="stil/1.png" class="gallery-img stilyagi-frame">
+            <img src="stil/2.png" class="gallery-img stilyagi-frame">
+            <img src="stil/3.png" class="gallery-img stilyagi-frame">
+            <img src="stil/4.png" class="gallery-img stilyagi-frame">
+            <img src="stil/5.jpg" class="gallery-img stilyagi-frame">
+
+            <!-- ПАНКИ -->
+            <img src="punki/1.png" class="gallery-img punk-frame">
+            <img src="punki/2.png" class="gallery-img punk-frame">
+            <img src="punki/3.png" class="gallery-img punk-frame">
+            <img src="punki/4.png" class="gallery-img punk-frame">
+            <img src="punki/5.png" class="gallery-img punk-frame">
+
+            <!-- НЬЮВЕЙВЕРЫ -->
+            <img src="newwave/1.jpg" class="gallery-img newwave-frame">
 </section>
 
-<script src="script.js"></script>
+<!-- =========================
+     LIGHTBOX
+========================= -->
+
+<div class="lightbox" id="lightbox">
+
+    <span class="close-lightbox" id="closeLightbox">
+        ✕
+    </span>
+
+    <img id="lightboxImg">
+
+</div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>

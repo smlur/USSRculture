@@ -1,7 +1,136 @@
+
+.playfair-display-sc-regular {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.playfair-display-sc-bold {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.playfair-display-sc-black {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.playfair-display-sc-regular-italic {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.playfair-display-sc-bold-italic {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.playfair-display-sc-black-italic {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Playfair Display SC", serif;
     background: white;
+    overflow-x: hidden;
+}
+
+/* ===== ЗАГОЛОВОК ===== */
+.main-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 48px;
+    font-weight: 700;
+    font-family: "Playfair Display SC", serif;
+}
+
+/* ===== СЛАЙДЕР ===== */
+.intro-slider {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.intro-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.intro-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: white;
+}
+
+/* КАРТИНКА */
+.intro-slide img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ТЕКСТ */
+.intro-text {
+    width: 50%;
+    padding: 60px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 22px;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* ===== СТРЕЛКИ ===== */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(5px);
+
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10;
+
+    transition: 0.3s;
+}
+
+.arrow:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.left-arrow {
+    left: 20px;
+}
+
+.right-arrow {
+    right: 20px;
 }
 
 /* ===== КНОПКИ ===== */
@@ -9,7 +138,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 15px;
-    padding: 20px;
+    padding-bottom: 30px;
 }
 
 .btn {
@@ -22,14 +151,13 @@ body {
     transition: 0.3s;
 }
 
-/* Цвета */
+/* ЦВЕТА */
 .hippie { border-color: green; color: green; }
 .lyubery { border-color: orange; color: orange; }
 .stilyagi { border-color: deeppink; color: deeppink; }
 .punk { border-color: blue; color: blue; }
 .newwave { border-color: purple; color: purple; }
 
-/* Hover */
 .btn:hover {
     color: white;
 }
@@ -40,30 +168,63 @@ body {
 .punk:hover { background: blue; }
 .newwave:hover { background: purple; }
 
-/* Active */
-.btn.active {
+/* ===== СТРЕЛКИ ===== */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 60px;
+    height: 60px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+
     color: white;
+    font-size: 40px;
+    font-weight: bold;
+
+    cursor: pointer;
+    z-index: 10;
+
+    transition: 0.3s;
 }
 
-.hippie.active { background: green; }
-.lyubery.active { background: orange; }
-.stilyagi.active { background: deeppink; }
-.punk.active { background: blue; }
-.newwave.active { background: purple; }
+.arrow:hover {
+    transform: translateY(-50%) scale(1.15);
+    opacity: 0.7;
+}
 
-/* ===== ОСНОВА ===== */
+.left-arrow {
+    left: 20px;
+}
+
+.right-arrow {
+    right: 20px;
+}
+
+/* ===== НИЖНИЙ СЛАЙДЕР ===== */
 .content {
     position: relative;
-    height: calc(100vh - 80px);
-    overflow: hidden;
+    min-height: 100vh;  /* можно оставлять минимум на экран */
+    height: auto;       /* главное — убрать фикс */
+    overflow: visible;  /* важно */
+    padding-bottom: 60px; /* чтобы не прилипало к низу */
+    position: relative;
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
 }
 
-/* ===== ТЕКСТ ===== */
+/* ТЕКСТ */
 .text {
     position: absolute;
     top: 0;
     width: 30%;
-    height: 100%;
+    max-height: none;
+    align-items: flex-start;
     padding: 50px 30px;
     box-sizing: border-box;
     z-index: 2;
@@ -72,43 +233,40 @@ body {
     align-items: center;
 
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.7;
     text-align: justify;
 
-    /* ЧИСТЫЙ БЕЛЫЙ ФОН */
     background: white;
 }
 
-/* ЛЕВЫЙ БЛОК */
+/* ЛЕВЫЙ */
 .left {
     left: 0;
 }
 
-/* ПРАВЫЙ БЛОК */
+/* ПРАВЫЙ */
 .right {
     right: 0;
 }
 
-/* ГРАДИЕНТ ВНЕ ТЕКСТА */
+/* ГРАДИЕНТЫ */
 .left::after,
 .right::after {
     content: "";
     position: absolute;
     top: 0;
-    width: 80px;
+    width: 100px;
     height: 100%;
     pointer-events: none;
 }
 
-/* справа от левого текста */
 .left::after {
-    right: -80px;
+    right: -100px;
     background: linear-gradient(to right, white, transparent);
 }
 
-/* слева от правого текста */
 .right::after {
-    left: -80px;
+    left: -100px;
     background: linear-gradient(to left, white, transparent);
 }
 
@@ -133,12 +291,709 @@ body {
     object-fit: cover;
 }
 
-/* АНИМАЦИЯ */
 @keyframes slide {
     from {
         transform: translateX(0);
     }
     to {
         transform: translateX(-50%);
+    }
+}
+
+/* ===== ПЕРВЫЙ СЛАЙДЕР ===== */
+
+.intro-slide {
+    min-width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+}
+
+/* КАРТИНКА НА ВЕСЬ СЛАЙД */
+.intro-slide img {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+}
+
+/* ТЕМНОЕ ЗАТЕМНЕНИЕ ДЛЯ ЧИТАЕМОСТИ */
+.intro-slide::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background: rgba(0,0,0,0.35);
+
+    z-index: 2;
+}
+
+/* ТЕКСТ */
+.intro-text {
+
+    position: relative;
+    z-index: 3;
+
+    width: 60%;
+
+    margin-left: 8%;
+
+    color: white;
+
+    font-size: 24px;
+    line-height: 1.8;
+
+    text-align: justify;
+}
+
+/* ===== ВТОРОЙ СЛАЙДЕР ===== */
+
+.carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    animation: slide 30s linear infinite;
+}
+
+/* ОБРАБОТКА ЛЮБЫХ КАРТИНОК */
+.slides img {
+
+    width: 100vw;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+
+    flex-shrink: 0;
+
+    image-rendering: auto;
+}
+
+.content {
+    position: relative;
+    height: 100vh;
+    display: flex;
+}
+
+/* половины */
+.column {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* окна */
+.viewport {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* текст */
+.text-column {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* картинки */
+.image-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* кнопка вниз */
+.down-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+
+    font-size: 28px;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.slide {
+    will-change: transform;
+}
+
+.image-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* фиксируем пропорцию 1400x800 */
+    aspect-ratio: 1400 / 800;
+}
+
+.image-column {
+    aspect-ratio: 1400 / 800;
+    height: auto;
+}
+
+/* =========================
+   ТЕСТ СССР
+========================= */
+
+.quiz-section {
+    min-height: 100vh;
+    padding: 80px 40px;
+    background: white;
+}
+
+.quiz-title {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 60px;
+}
+
+.quiz-box {
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    background: white;
+
+    border-radius: 30px;
+
+    padding: 50px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.question {
+    font-size: 34px;
+    margin-bottom: 40px;
+    line-height: 1.4;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.answer-btn {
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    background: white;
+    font-size: 22px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.answer-btn:hover {
+    transform: translateX(10px);
+}
+
+.answer-btn.selected {
+    background: black;
+    color: white;
+    border-color: black;
+}
+
+#nextBtn {
+    margin-top: 40px;
+    width: 100%;
+    padding: 25px;
+    border: none;
+    border-radius: 20px;
+    background: black;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#nextBtn:hover {
+    opacity: 0.85;
+}
+
+#result {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 1.5;
+}
+
+/* =========================
+   ГАЛЕРЕЯ СССР
+========================= */
+
+.gallery-section {
+
+    padding: 100px 0;
+
+    overflow: hidden;
+
+    background: white;
+}
+
+.gallery-title {
+
+    text-align: center;
+
+    font-size: 48px;
+
+    margin-bottom: 60px;
+}
+
+.gallery-wrapper {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.gallery-track {
+
+    display: flex;
+
+    gap: 30px;
+
+    width: max-content;
+
+    animation: galleryScroll 60s linear infinite;
+}
+
+.gallery-img {
+
+    height: 25vh;
+
+    width: auto;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    flex-shrink: 0;
+
+    transition: 0.4s;
+}
+
+.gallery-img:hover {
+
+    transform: scale(1.05);
+}
+
+/* =========================
+   РАМКИ ПО СТИЛЯМ
+========================= */
+
+.hippie-frame {
+
+    border: 6px solid green;
+}
+
+.lyubery-frame {
+
+    border: 6px solid orange;
+}
+
+.stilyagi-frame {
+
+    border: 6px solid hotpink;
+}
+
+.punk-frame {
+
+    border: 6px solid blue;
+}
+
+.newwave-frame {
+
+    border: 6px solid purple;
+}
+
+/* =========================
+   АНИМАЦИЯ
+========================= */
+
+@keyframes galleryScroll {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+    z-index: 9999;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-lightbox:hover {
+    transform: scale(1.2);
+}
+
+
+
+/* =========================
+   АДАПТАЦИЯ ПОД ТЕЛЕФОНЫ
+========================= */
+
+@media (max-width: 900px) {
+
+    /* =========================
+       ЗАГОЛОВКИ
+    ========================= */
+
+    .main-title {
+        font-size: 32px;
+
+        padding: 0 20px;
+    }
+
+    .gallery-title,
+    .quiz-title {
+
+        font-size: 34px;
+
+        padding: 0 20px;
+    }
+
+    /* =========================
+       КНОПКИ
+    ========================= */
+
+    .menu {
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+
+        padding: 0 15px;
+    }
+
+    .btn {
+
+        font-size: 14px;
+
+        padding: 10px 16px;
+    }
+
+    /* =========================
+       ВВОДНЫЙ СЛАЙДЕР
+    ========================= */
+
+    .intro-slider {
+
+        height: 420px;
+    }
+
+    .intro-slide {
+
+        height: 420px;
+    }
+
+    .intro-slide img {
+
+        height: 100%;
+    }
+
+    .intro-text {
+
+        width: 90%;
+
+        font-size: 16px;
+
+        padding: 20px;
+    }
+
+    /* стрелки */
+
+    .arrow {
+
+        font-size: 32px;
+    }
+
+    /* =========================
+       СЕКЦИЯ СУБКУЛЬТУР
+    ========================= */
+
+    .content {
+
+        flex-direction: column;
+
+        height: auto;
+    }
+
+    /* ТЕКСТ */
+
+    .text {
+
+        width: 100%;
+
+        height: auto;
+
+        min-height: auto;
+
+        padding: 30px 25px;
+
+        font-size: 16px;
+
+        overflow: visible;
+    }
+
+    .text.left {
+
+        background:
+        linear-gradient(
+            to bottom,
+            white 85%,
+            rgba(255,255,255,0)
+        );
+    }
+
+    .text.right {
+
+        background:
+        linear-gradient(
+            to top,
+            white 85%,
+            rgba(255,255,255,0)
+        );
+    }
+
+    /* =========================
+       КАРУСЕЛЬ
+    ========================= */
+
+    .carousel {
+
+        width: 100%;
+
+        height: 320px;
+
+        flex: none;
+    }
+
+    .slides img {
+
+        width: 100vw;
+
+        height: 320px;
+
+        object-fit: cover;
+    }
+
+    /* =========================
+       ТЕСТ
+    ========================= */
+
+    .quiz-section {
+
+        padding: 60px 20px;
+    }
+
+    .quiz-box {
+
+        padding: 25px;
+    }
+
+    .question {
+
+        font-size: 24px;
+    }
+
+    .answer-btn {
+
+        font-size: 17px;
+
+        padding: 18px;
+    }
+
+    #nextBtn {
+
+        font-size: 20px;
+
+        padding: 18px;
+    }
+
+    #result {
+
+        font-size: 28px;
+    }
+
+    /* =========================
+       ГАЛЕРЕЯ
+    ========================= */
+
+    .gallery-section {
+
+        padding: 70px 0;
+    }
+
+    .gallery-track {
+
+        gap: 15px;
+    }
+
+    .gallery-img {
+
+        height: 22vh;
+
+        border-width: 4px;
+    }
+
+    /* =========================
+       LIGHTBOX
+    ========================= */
+
+    .lightbox img {
+
+        max-width: 95%;
+
+        max-height: 80%;
+    }
+
+    .close-lightbox {
+
+        top: 15px;
+
+        right: 20px;
+
+        font-size: 40px;
+    }
+}
+
+/* =========================
+   МАЛЕНЬКИЕ ТЕЛЕФОНЫ
+========================= */
+
+@media (max-width: 500px) {
+
+    .main-title {
+
+        font-size: 28px;
+    }
+
+    .gallery-title,
+    .quiz-title {
+
+        font-size: 28px;
+    }
+
+    .question {
+
+        font-size: 21px;
+    }
+
+    .answer-btn {
+
+        font-size: 15px;
+    }
+
+    .intro-slider {
+
+        height: 500px;
+    }
+
+    .intro-slide {
+
+        height: 500px;
+    }
+
+    .intro-text {
+
+        font-size: 15px;
+
+        line-height: 1.6;
+    }
+
+    .carousel {
+
+        height: 260px;
+    }
+
+    .slides img {
+
+        height: 260px;
+    }
+
+    .gallery-img {
+
+        height: 20vh;
     }
 }
